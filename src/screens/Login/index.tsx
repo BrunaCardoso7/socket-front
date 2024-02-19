@@ -1,8 +1,11 @@
-import { View, Text } from "react-native";
+import { View, Text, Alert } from "react-native";
 import Input from "./components/Input";
 import { useState } from "react";
 import Button from "./components/button";
 import ButtonLink from "./components/buttonLink";
+import { signinService } from "../../service/signin.service";
+
+
 
 type UserProps = {
     email: string
@@ -13,7 +16,7 @@ export default function LoginApp () {
     const [userData, setUserData] = useState<UserProps>({
         email: '',
         password: ''
-    })
+    })  
 
     const handleUserData = (key: keyof UserProps, value: string) => {
         setUserData(prevState => ({
@@ -21,6 +24,16 @@ export default function LoginApp () {
             [key]: value
         }))
     }
+   
+
+    const handleSubmit = async () => {
+        try {
+            await signinService(userData)
+        } catch (error) {
+            
+        }
+    }
+
 
     return(
         <View className="flex-1 justify-center items-center gap-10">
@@ -39,7 +52,7 @@ export default function LoginApp () {
             </View>
             <View>
             <View className="flex-col justify-center items-center">
-                <Button>
+                <Button onPress={handleSubmit}>
                     <Button.Text>
                         <Button.Text>
                             Entrar
