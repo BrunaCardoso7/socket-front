@@ -33,13 +33,14 @@ export default function Register () {
         try {
             const response = await signupService(userData)
             setUserData(response?.data);
+            // navigation.navigate("chat")
             Alert.alert('sucesso', 'cadastrado com sucesso')
             // navigation.navigate('login')
         } catch (error) {
             console.error("deu ruim: ", error)
             Alert.alert('falha', 'erro com de reposta na api')
         }
-    }
+    }                                                                                                           
 
     return(
         <View className="flex-1 justify-center items-center gap-10">
