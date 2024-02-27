@@ -11,9 +11,9 @@ export default function App() {
    <>
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name='chat' component={ Chat } />
         <Stack.Screen name='login' component={ LoginApp } />
         <Stack.Screen name='register' component={ Register } />
-        <Stack.Screen name='chat' component={ Chat } />
       </Stack.Navigator>
     </NavigationContainer>
    </>
